@@ -22,7 +22,7 @@ mc.listen(
     const stripedIp = stripIp(ip);
 
     if (!hidePassMessage)
-      logger.info(`正在从本地黑名单查询玩家 ${realName} 的封禁记录……`);
+      //logger.info(`正在从本地黑名单查询玩家 ${realName} 的封禁记录……`);
 
     try {
       for (const it of localList.list) {
@@ -44,7 +44,7 @@ mc.listen(
     }
 
     if (!hidePassMessage)
-      logger.info(`没有查询到玩家 ${realName} 的本地黑名单记录`);
+      //logger.info(`没有查询到玩家 ${realName} 的本地黑名单记录`);
 
     // 查 BlackBE
     if (
@@ -52,12 +52,12 @@ mc.listen(
       config.pardonBlackBE.includes(xuid)
     ) {
       if (!hidePassMessage)
-        logger.info(`玩家 ${realName} 的 BlackBE 违规记录检查已被赦免`);
+        //logger.info(`玩家 ${realName} 的 BlackBE 违规记录检查已被赦免`);
       return;
     }
 
     if (!hidePassMessage)
-      logger.info(`正在从 BlackBE 查询玩家 ${realName} 的违规记录……`);
+      //logger.info(`正在从 BlackBE 查询玩家 ${realName} 的违规记录……`);
 
     try {
       const { data } = await check({ name: realName, xuid });
@@ -82,8 +82,10 @@ mc.listen(
       return;
     }
 
-    if (!hidePassMessage)
-      logger.info(`没有查询到玩家 ${realName} 的 BlackBE 违规记录`);
+    if (!hidePassMessage){
+      //logger.info(`没有查询到玩家 ${realName} 的 BlackBE 违规记录`);
+    }
+      
   })
 );
 
