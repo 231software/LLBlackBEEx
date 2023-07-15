@@ -16,7 +16,7 @@ mc.listen(listenerType, (0, util_1.wrapAsyncFunc)(async (player) => {
     const { ip, clientId } = player.getDevice();
     const stripedIp = (0, util_1.stripIp)(ip);
     if (!hidePassMessage)
-        logger.info(`正在从本地黑名单查询玩家 ${realName} 的封禁记录……`);
+        //logger.info(`正在从本地黑名单查询玩家 ${realName} 的封禁记录……`);
     try {
         for (const it of config_1.localList.list) {
             if (realName === it.name ||
@@ -34,15 +34,15 @@ mc.listen(listenerType, (0, util_1.wrapAsyncFunc)(async (player) => {
         return;
     }
     if (!hidePassMessage)
-        logger.info(`没有查询到玩家 ${realName} 的本地黑名单记录`);
+        //logger.info(`没有查询到玩家 ${realName} 的本地黑名单记录`);
     if (config_1.config.pardonBlackBE.includes(realName) ||
         config_1.config.pardonBlackBE.includes(xuid)) {
         if (!hidePassMessage)
-            logger.info(`玩家 ${realName} 的 BlackBE 违规记录检查已被赦免`);
+            //logger.info(`玩家 ${realName} 的 BlackBE 违规记录检查已被赦免`);
         return;
     }
     if (!hidePassMessage)
-        logger.info(`正在从 BlackBE 查询玩家 ${realName} 的违规记录……`);
+        //logger.info(`正在从 BlackBE 查询玩家 ${realName} 的违规记录……`);
     try {
         const { data } = await (0, blackbe_1.check)({ name: realName, xuid });
         const { exist, info } = data;
@@ -60,8 +60,9 @@ mc.listen(listenerType, (0, util_1.wrapAsyncFunc)(async (player) => {
         logger.error(`查询玩家 ${realName} 的 BlackBE 违规记录出错！\n${String(e)}`);
         return;
     }
-    if (!hidePassMessage)
-        logger.info(`没有查询到玩家 ${realName} 的 BlackBE 违规记录`);
+    if (!hidePassMessage){
+        //logger.info(`没有查询到玩家 ${realName} 的 BlackBE 违规记录`);
+    }
 }));
 setInterval(() => {
     const { list } = config_1.localList;
